@@ -66,7 +66,10 @@ a {
 ###### Asset Pipeline in Production ######
 
 <%# Todos os assets precompilados, concatenados, etc são gerados em `public/assets` no momento do deploy %>
-
 rails assets:precompile
 
+<%# Utilizado o comando a cima em desenvolvimento é preciso limpar a pasta public/assets, caso contrário todo o css em ap/assets %>
+<%# será sobrescrevido pelo public/assets %>
+rails assets:clobber
 
+https://guides.rubyonrails.org/asset_pipeline.html
