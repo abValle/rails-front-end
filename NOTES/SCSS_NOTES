@@ -1,0 +1,72 @@
+<%# Forma mais fácil de se escrever CSS %>
+
+############### SCSS ###############
+
+<%# Descomentar essa linha no `gemfile` e rodar `bundle install` %>
+gem "sassc-rails"
+
+###### Graphic Variables ######
+
+<%# Definir variável utilizando $ %>
+
+$gray: #F4F4F4;
+$spacer: 8px;
+
+body {
+  background: $gray; // Using this variable
+}
+
+p {
+  padding: $spacer ($spacer * 3);
+}
+
+###### NESTING ######
+
+<%# Não realizar nesting com mais de um level $ %>
+
+.banner {
+  background: red;
+
+  h1 {
+    font-size: 50px;
+  }
+}
+
+###### CHAINING ######
+
+<%# Não realizar nesting com mais de um level $ %>
+
+a {
+  color: grey;
+
+  &:hover {
+    color: black;
+  }
+}
+
+
+###### Asset Pipeline ######
+
+ <%# É um framework em rails que precompile, concatenate and compress todo CSS e images do projeto %>
+ <%# É implementado pela gem `Sprockets` e gerencia a pasta app/assets %>
+
+
+<%# Tag para carregar o CSS em `app/views/layouts/application.html.erb` %>
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+<%# `Precompile` de SCSS em CSS %>
+<%# `Concatenation` linkar as partials com application.scss %>
+<%# `Fingerprint`, assets caching. Acessada a aplicação, o css fica guardado localmente através de cache.%>
+  <%# quando ocorrer alguma atualização na plataforma o browser identifica quais componentes precisam ser baixados %>
+  <%# através do Fingerprint, `href em link` %>
+<%# `Minification` retira todos os espaços e caracteres que fazem o html human readable, não são necessários para a máquina %>
+<%# `Compression` reduzir os tamanhos dos assets. Setado como default e produção%>
+
+
+###### Asset Pipeline in Production ######
+
+<%# Todos os assets precompilados, concatenados, etc são gerados em `public/assets` no momento do deploy %>
+
+rails assets:precompile
+
+
