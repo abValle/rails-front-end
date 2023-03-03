@@ -73,3 +73,49 @@ rails assets:precompile
 rails assets:clobber
 
 https://guides.rubyonrails.org/asset_pipeline.html
+
+
+
+###### Simple Form ######
+<!-- adicionar gem na gemfile: bundle install -->
+gem "simple_form", github: "heartcombo/simple_form"
+<!-- E gerar instalação com bootstrap -->
+rails generate simple_form:install --bootstrap
+
+###### Autoprefixer ######
+<!-- Adapatar css para outros browsers -->
+
+###### Javascript in Rails 7 ######
+
+<!-- Nova forma de utilização é através do `import maps` -->
+<!-- Run javascript `yarn build --watch` -->
+
+###### Stimulus ######
+
+<!-- Gerar novo controller -->
+rails generate stimulus `name_controller`
+
+<!-- Dar um controller para uma tag -->
+
+data-controller=`name_controller`
+
+
+
+###### Javascript/Bootstrap - Outras Pacotes ######
+
+<!-- Javascript do bootstrap -->
+yarn add bootstrap
+
+<!-- Adicionar em // config/initializers/assets.rb -->
+
+Rails.application.config.assets.paths << Rails.root.join("node_modules")
+
+yarn add @popperjs/core
+
+<!-- Adicionar em  // app/javascript/application.js -->
+import "bootstrap"
+
+<!-- Adicionar Type-JS. Necessário <span> tag -->
+rails g stimulus `name_controller`
+  <!-- Importar no controller gerado -->
+  import Typed from "typed.js"
